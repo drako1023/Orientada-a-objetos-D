@@ -1,2 +1,1 @@
-# Orientada-a-objetos-B
-Proyecto modular de POO
+CREATE USER 'Usuario'@'localhost' IDENTIFIED BY 'mypassword';
