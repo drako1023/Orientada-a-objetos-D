@@ -1,10 +1,6 @@
-from peewee import *
+from peewee import BooleanField, CharField, IntegerField, Model, SQL
 
-
-database = MySQLDatabase(
-    'encuestas',
-    **{'charset': 'utf8mb4', 'host': 'localhost', 'port': 3306, 'user': 'chile', 'password': '1234'}
-)
+from datos.database import database
 
 
 class BaseModel(Model):
@@ -23,4 +19,3 @@ class Recompensa(BaseModel):
 
     class Meta:
         table_name = 'recompensa'
-

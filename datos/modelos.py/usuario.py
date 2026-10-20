@@ -1,10 +1,6 @@
-from peewee import *
+from peewee import BooleanField, CharField, DateTimeField, IntegerField, Model, SQL
 
-
-database = MySQLDatabase(
-    'encuestas',
-    **{'charset': 'utf8mb4', 'host': 'localhost', 'port': 3306, 'user': 'chile', 'password': '1234'}
-)
+from datos.database import database
 
 
 class BaseModel(Model):
@@ -13,7 +9,7 @@ class BaseModel(Model):
 
 class Usuario(BaseModel):
     activo = BooleanField(constraints=[SQL("DEFAULT 1")], null=True)
-    contraseña = charField()
+    contraseña = CharField()
     correo_electronico = CharField(max_length=100, unique=True)
     edad = IntegerField(null=True)
     empresa = CharField(max_length=100, null=True)
@@ -26,4 +22,3 @@ class Usuario(BaseModel):
 
     class Meta:
         table_name = 'usuario'
-
