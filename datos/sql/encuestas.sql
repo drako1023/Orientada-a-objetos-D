@@ -15,6 +15,27 @@
 
 ) COMMENT 'Tabla que almacena la informacion de los usuarios';
 
+CREATE TABLE empresa (
+    id_empresa INT PRIMARY KEY,
+    nombre_empresa VARCHAR(100) NOT NULL,
+    direccion VARCHAR(255),
+    telefono VARCHAR(15),
+    correo_electronico VARCHAR(100) UNIQUE NOT NULL,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    mercado_empresa VARCHAR(100),
+    activo BOOLEAN DEFAULT TRUE
+) COMMENT 'Tabla que almacena la informacion de la empresa';
+
+CREATE TABLE recompensa (
+    id_recompensa INT PRIMARY KEY,
+    tipo VARCHAR(50) NOT NULL,
+    descripcion VARCHAR(255),
+    duracion_dias INT COMMENT 'Dias disponibles para obtener o canjear la recompensa',
+    requisitos VARCHAR(255),
+    activo BOOLEAN DEFAULT TRUE,
+    registro_recompensa BOOLEAN DEFAULT TRUE
+) COMMENT 'Tabla que almacena los tipos de recompensa de las encuestas';
+
 CREATE TABLE encuesta (
     id_encuesta INT PRIMARY KEY,
     titulo VARCHAR(100) NOT NULL,
@@ -35,35 +56,11 @@ CREATE TABLE encuesta (
         FOREIGN KEY (id_recompensa) REFERENCES recompensa (id_recompensa)
 ) COMMENT 'Tabla que almacena la informacion de las encuestas';
 
-
-CREATE TABLE empresa (
-    id_empresa INT PRIMARY KEY,
-    nombre_empresa VARCHAR(100) NOT NULL,
-    direcion VARCHAR(255),
-    telefono VARCHAR(15),
-    correo_electronico VARCHAR(100) UNIQUE NOT NULL,
-    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    mercado_empresa VARCHAR(100),
-    activo BOOLEAN DEFAULT TRUE
-) COMMENT 'Tabla que almacena la informacion de la empresa';
-
-CREATE TABLE recompensa (
-    id_recompensa INT PRIMARY KEY,
-    tipo VARCHAR(50) NOT NULL,
-    descripcion VARCHAR(255),
-    duracion_dias INT COMMENT 'Dias disponibles para obtener o canjear la recompensa',
-    requisitos VARCHAR(255),
-    activo BOOLEAN DEFAULT TRUE,
-    registro_recompensa BOOLEAN DEFAULT TRUE
-) COMMENT 'Tabla que almacena los tipos de recompensa de las encuestas';
-
-
 CREATE TABLE requisitos (
     id_requisitos INT PRIMARY KEY,
     descripcion VARCHAR(255),
     activo BOOLEAN DEFAULT TRUE,
     vinculo VARCHAR(20)
 ) comment 'Tabla que re representa los requisitos de las recompensas';
-
 
 

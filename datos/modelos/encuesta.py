@@ -19,7 +19,7 @@ class Encuesta(BaseModel):
     id_recompensa = IntegerField(index=True, null=True)
     id_usuario = IntegerField(index=True, null=True)
     privada_permitida = BooleanField(constraints=[SQL("DEFAULT 0")], null=True)
-    titulo = CharField(max_length=100)
+    titulo = CharField(max_length=100, unique=True)
 
     class Meta:
         table_name = 'encuesta'

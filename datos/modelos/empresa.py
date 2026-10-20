@@ -15,7 +15,7 @@ class Empresa(BaseModel):
     fecha_registro = DateTimeField(constraints=[SQL("DEFAULT CURRENT_TIMESTAMP")], null=True)
     id_empresa = IntegerField(primary_key=True)
     mercado_empresa = CharField(max_length=100, null=True)
-    nombre_empresa = CharField(max_length=100)
+    nombre_empresa = CharField(max_length=100, unique=True)
     telefono = CharField(max_length=15, null=True)
 
     class Meta:

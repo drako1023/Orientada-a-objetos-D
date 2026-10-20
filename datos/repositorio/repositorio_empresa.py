@@ -1,13 +1,19 @@
-from datos.modelos.py.empresa import Empresa
+from datos.modelos.empresa import Empresa
 
 
 def listado_empresas():
     try:
-        empresas = Empresa.select().where(Empresa.estado == 1)
-        if empresas:
-            return list(empresas)
+        empresas = Empresa.select().where(Empresa.activo == 1)
+        return list(empresas)
     except Exception as e:
         print(f"Error al obtener el listado de empresas: {e}")
+
+def obtener_empresa_por_nombre(nombre_empresa: str):
+    try:
+        empresa = Empresa.get_or_none(Empresa.nombre_empresa == nombre_empresa)
+        return empresa
+    except Exception as e:
+        print(f"Error al obtener la empresa por nombre: {e}")
 
 
 def obtener_empresa_por_id(id_empresa: int):
@@ -16,6 +22,14 @@ def obtener_empresa_por_id(id_empresa: int):
         return empresa
     except Exception as e:
         print(f"Error al obtener la empresa por ID: {e}")
+
+def obtener_empresa_por_mercado_empresa(mercado_empresa: str):
+    try:
+        empresas = Empresa.select().where(Empresa.mercado_empresa == mercado_empresa)
+        return list(empresas)
+    except Exception as e:
+        print(f"Error al obtener la empresa por mercado: {e}")
+
 
 
 def guardar_empresa(empresa: Empresa):
