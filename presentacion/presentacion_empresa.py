@@ -1,3 +1,4 @@
+
 from prettytable import PrettyTable
 from datos.repositorio.repositorio_empresa import listado_empresas
 
