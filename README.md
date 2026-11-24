@@ -81,6 +81,18 @@ FLUSH PRIVILEGES;
 9. Compruebe que se hayan creado las tablas `usuario`, `empresa`,
    `recompensa`, `encuesta` y `requisitos`.
 
+La conexión se configura en el archivo `.env`, ubicado en la raíz del proyecto.
+Puede copiar `.env.example` y modificar sus valores:
+
+```env
+DB_NAME=encuestas
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=chile
+DB_PASSWORD=1234
+DB_CHARSET=utf8mb4
+```
+
 La configuración predeterminada de la aplicación utiliza:
 
 - Base de datos: `encuestas`
@@ -90,7 +102,8 @@ La configuración predeterminada de la aplicación utiliza:
 - Contraseña: `1234`
 
 Si su usuario o contraseña de MySQL son distintos, modifique los valores en
-`datos/database.py`.
+`.env`. Las variables de entorno del sistema tienen prioridad sobre el archivo
+`.env`.
 
 ## Usuario inicial
 
